@@ -1,0 +1,195 @@
+/*   API Automation Framework
+ 
+-----------------------------------------  What is Framework -----------------------------------------------
+
+When we try to automate any test case so we have so many types of files , so we have to maintain all types of files,
+like we have to maintain different URL and End points, some time we have POJO classes, data driven test cases, 
+Reports, so we need to maintain all those things properly (Maintain all project related files).
+
+Main objective of designing the framework 
+1 Reusability
+2 Maintainability 
+3 Readability 
+
+Reusability : Some time we create/ use any component or class that will be reusable , multiple time we can use it
+
+Maintainability : If we design our framwwork today  tommorow someone use that framework 
+and he want to modify existing test cases then he should abole to do it.
+
+Readability : Once we design the framework the any one can read or understand code/ framework.
+  
+------------------------------------- Hybrid Driven Framework ------------------------------------------------------
+
+Hybrid Driven Framework is combination of Data driven and Keyword driven framework
+
+--------------------------------- Phases Comes under developing the Framework --------------------------------------
+
+1 Understanding Requirement
+	Functional specification(Static Documet)
+	Swagger (here we know what kind of request and response in expected)
+
+2 Choose Automation Tool
+	Rest Assured Library
+
+3 Design Framework
+	What kind of folder structure should be there
+	What kind of file we have to create , how we manage
+	
+4 Development
+	What ever file we decide, once we design we have to implement  those files.
+
+5 Execution + Continues Integration(CI)
+
+------------------------------------------------------ Pre-Requisites ------------------------------------------------------
+
+Step 1 : Create a Maven Project
+1 Go to File
+2 click on new
+3 Select project
+4 Inside Maven select Maven Project
+5 Select first check box & click on next
+6 specify group_id & artifact_id and click on finish.
+
+src/main/java : developer keep developing code inside the src/main/java.
+
+src/test/java : If developer wants to test that code, Those test cases they will keep inside the src/test/java.
+
+src/main/resources : Suppose while developing the main code, if we need any resources, like property file, src file, 
+or any external file they will keep inside the src/main/resources
+
+src/test/resources : while developing the test cases if you need any resources that will keep inside the src/test/resources.
+
+For the testing prespective we need to folder only
+1 src/test/java
+2 src/test/resources
+
+Step 2 : Update pom.xml with required dependancies 
+
+Step 3 : Create Project Structure
+
+Step 4 : Create Routes.java which contains URL's
+We have to create routes class inside the endpoints package, this class contains only the required URL.
+
+Step 5 : Create UserEndPoints.java file which contains CRUD methods implementation.
+we have to create this class inside the endpoints package.
+
+Step 6 : Create PojoClass.java under api.payload package
+here we have to add the require filed or variable, then select all, go to source and select generate getter and setter
+
+Step 7 : Write the Test Cases.
+	First we have to create one class UserTest.java under api.test package.
+	Here by using faker labrary we have to create the data & pass it to the POJO class.
+	And that data will be pass along with the POST request
+	In this class we have to call all the methods which is created inside the UserEndPoints.java class
+
+Also we have to follow
+1 Create a Data Using Faker Libary & pass it to POJO class ie. User.java
+2 Then we have to write the test methods for post,put,delete,get & set the priority to all methods
+
+1st we need to set up data using pojo
+by using faker we create the data (we are generating our own id)
+for postuser we are calling create user method by passing userpayload
+
+Step 8 : Create data driven test
+Suppose i want to perform data driven testing, whether user able to create multiple types of data we can check.
+
+Pre-Requisite:
+1 Need to have user data in excel sheet
+2 need to use apache poi, we need ExcelUtility file
+3 create one folder "testData" inside that folder add your excelsheet
+4 DataProvider
+
+we have to create multiple user using our excelsheet data.
+Also we need to add two dependancies
+	apache poi 
+	poi-ooxml
+Create on class "XLUtility" inside the api.utilities package
+	
+If you have one data to test one data provider is enough but if you have multiple dtadriven test we have to create 
+dataproviders and these dataprovider we have to keep inside the api.utilities
+
+Why we use DataProvider 
+1 DataProvider will get the data from the excelsheet.
+2 DataProvider is one of the annotation method which ever method we provide the dataprovider that method is responsible to 
+provide data to another method
+3 DataProvider get the data from excelsheet and store that data in 2D array.
+4 DataProvider  provide/pass the data to test case(method)
+5 The test case will repeate the number of times based on the data provided by the DataProvider.
+6 so we used here XLUtility along with the DataProvider.
+7 DataProvider is reusable component so under api.utilities package we have to create "DatatProviders.java" class
+
+Example:
+suppose any perticular method is define with @DataProvider anotation
+that method generating the data and passing the data to another test method in a project
+	
+5 create on e dataDriven class "DDTests.java" under the api.test package
+Here in DataDrivenTest class we can create multiple test/user by sending POST request multiple time.
+Once it is created we can deal with all the users by passing the user name.
+
+Inside the excelsheet we have no. of users, so 1st we have to pass the entire excelsheet data to the database using POST, 
+suppose we have 5 user so, we have to create 5 test.
+Suppose you want to delete any user so from excelsheet we have to read only username & pass that username as input to delete request.
+Then delete the user which is available in the database.
+
+We have to create two data driven test case
+1 we are create multiple user's by sending POST request
+2 we are pass only user name to data provider & delete the user
+
+1 create multiple post method, also we use pojo class
+
+Step 8 : Generate Extent Report
+For generating extent report we required
+1 Extent report utility class
+2 testng.xml file
+
+1 - first we have to create utility file
+2 - we have to add extent report dependency in pom.xml
+
+Here we use Listener in TestNG listener is used.
+once you execute the test method  based on status message you will perform some post action, pass,fail,skip.
+
+Generating test report is one of the post action, once our test method executed then we will create reports.
+
+Also we have to use 4 methods
+1 onStart
+2 onTestSuccess
+3 onTestFailure
+4 onFinish (once you created everything then we call flush method to make sure everything is ready in the report
+if you do not call this method the report will not generate)
+
+---whenever you want to generate extent report using testng.xml file 
+---create one xml file follow the below steps
+	1 Right click on api.test package
+	2 Go to TestNG
+	3 Select Convert to TestNG
+	4 the file name if you want
+	5 click on finish (TestNg cml file will be generated)
+	
+Step 9 : Add the Log's
+	Here we use log4j2 library which is 3rd party library
+	By using this log4j2 we will able to generate the log's
+	
+	First we need to have "log4j2.xml" file. this is one of the configuration file
+	Add log4j2 dependency
+	We have to create this files inside the "src/test/resources"
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
