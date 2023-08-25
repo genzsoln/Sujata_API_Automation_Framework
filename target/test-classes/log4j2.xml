@@ -3,6 +3,7 @@
     <Properties>
         <Property name="basePath">./logs</Property>
     </Properties>
+    
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
@@ -12,8 +13,9 @@
             <SizeBasedTriggeringPolicy size="50000"/>
         </RollingFile>
     </Appenders>
+    
     <Loggers>
-        <Root level="info">
+        <Root level="debug">
             <AppenderRef ref="File"/>
         </Root>
     </Loggers>

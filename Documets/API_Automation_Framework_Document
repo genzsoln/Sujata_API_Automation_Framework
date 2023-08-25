@@ -88,7 +88,7 @@ Also we have to follow
 
 1st we need to set up data using pojo
 by using faker we create the data (we are generating our own id)
-for postuser we are calling create user method by passing userpayload
+for post user we are calling create user method by passing userpayload
 
 Step 8 : Create data driven test
 Suppose i want to perform data driven testing, whether user able to create multiple types of data we can check.
@@ -169,11 +169,12 @@ Step 9 : Add the Log's
 	Here we use log4j2 library which is 3rd party library
 	By using this log4j2 we will able to generate the log's
 	
-	First we need to have "log4j2.xml" file. this is one of the configuration file
-	Add log4j2 dependency
+	1 First we need to have "log4j2.xml" file. this is one of the configuration file
+	2 Add log4j2 dependency
 	We have to create this files inside the "src/test/resources"
 	
-	
+	3 Write code to generate the log's
+	we have to write this code inside the UserTests.java class which is under api.test package
 
 
 
