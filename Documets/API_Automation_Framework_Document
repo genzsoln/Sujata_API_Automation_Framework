@@ -166,6 +166,9 @@ if you do not call this method the report will not generate)
 	5 click on finish (TestNg cml file will be generated)
 	
 Step 9 : Add the Log's
+Logger is like a recording of what happens in a computer program. It helps programmers find and fix issues, see how the 
+program works, and keep track of important events.
+
 	Here we use log4j2 library which is 3rd party library
 	By using this log4j2 we will able to generate the log's
 	
@@ -176,21 +179,18 @@ Step 9 : Add the Log's
 	3 Write code to generate the log's
 	we have to write this code inside the UserTests.java class which is under api.test package
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	4 we have to create Logger object inside the UserTests class which is comes under api.test package
+	
+	5 Then we have to initiate the logger variable inside the setup method 
+		In same UserTests class before sending the request we have to write the logger.info("message"); 
+		Then run testng.xml file
+		Once we run log's will be generated. inside the log folder, just we have to refresh our log folder.
+		We can see all the messages will be generated.
+		In XML file if we put "Info" then only information will be displayed but we we write "DEBUG" then
+		Debug log/ we can see so many logs.
+		
+		
+		
 
 
 */

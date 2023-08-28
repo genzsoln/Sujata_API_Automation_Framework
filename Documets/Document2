@@ -1,0 +1,149 @@
+/*
+				Another Way To Run the Framework
+
+Instade of writing EndPoints, Rootclass, we have to create on Properties file, inside that Properties we have to 
+place all the URL's 
+
+1  Create Properties file
+	Go to Project
+	Create properties file under src/test/resources
+	Right click on src/test/resources,select new, file, provide the name routes.properties
+
+Properties file :
+	
+Properties file is like normal text file, we are not follow any proper syntax here, we dont wont any java syntaxes
+like duoble quotation, single quotation, or semicolon these things wont work, so we can just write plain data in the Properties file.
+	
+In Properties file "#" hash is a comment.
+
+2  Create one File for UserEndPoints, copy UserEndPoints file from api.endpoints and paste it in same package & rename it by UserEndPoints2
+   Design this end point to get the data from properties file.
+
+We need to add one additonal method, which will load your properties file.
+In java we have one class "Resource Bundle" is a special class which we have so by using that class we will able to 
+loas properties file and we will ablle to read the data from the properties file
+
+3 Create one class for UserTests2.java Copy paste UserTests.java in same package change the name.
+for reading the data
+
+4 got to testng.xml 
+	add your class name there i.e UserTest2
+	Run Your testng Suite
+	
+5  Execution
+Run the test cases using testng.xml you can directly run but if you want to run your test 
+cases remotely or through jenkins command prompt then we should able to run through ppm.xml
+
+We need to add dependency/plugins in pom.xml
+We need to add two different plugins.
+We need to add these plugin before the dependencies.
+1 Maven compiler plugin
+2 Maven surefire plugin
+
+1 Go to Chrome 
+2 Search maven surefire plugin is rewuire to run our test case through pom.xml 
+3 click on apache maven i.e maven.apache.org
+4 Go to Usage
+5 copy paste dependency/plugin in pom.xml
+6 go to search maven compiler plugin
+7 click on apache maven i.e maven.apache.org
+8 Go to Usage
+9 copy paste dependency/plugin in pom.xml
+10 also we need to add   <build> <pluginManagement> tag before Plugin
+11 In same plugin there is on comment 
+ <!-- put your configurations here -->
+ we need to add testng xml name 
+ <suite>testng.xml</suite>
+12 inside the configuration we need to add one more tag
+	          <configuration>
+            <!-- put your configurations here -->
+            <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+			</suiteXmlFiles>
+          </configuration>
+we need to add above tag under the surefire plugin.
+12 Save all the Plugin/dependency
+
+Then run pom.xml
+
+pom.xl is related to maven we have to run pom.xml file throght maven
+
+How to run pom.xml
+
+1  right click 
+2  select run as
+3  select maven test
+
+Our all the test cases run successfully & it shows BUILD SUCCESS, it meand all our tests are successfully 
+executed throught pom.xml.
+
+	So the configuration whcih we have to do in the pom.xml so that we are able to run our test through pom.xml
+	Also this is same process we have to follow when we use maven, for selenium, restassured 
+	-- we need to add maven plugin
+	-- specify the configuration
+
+6  Run pom.xml Remotely
+	we are running our test within our Eclipse locally
+	But Suppose tomorrow i move this project to somewhere else i dont have an eclipse and without Eclipse also we shouls able to 
+	run our project.
+	
+	We have to run our code through Jenkins , we are able to run our test in the remote environment that means through jenkins we will able to trigger
+	
+First of all we have to Check
+1 Our scripts are working without having Eclipse.
+2 Without using Eclipse can we run our scripts through command prompt 
+3 we have to run this pom.xml through command prompt
+
+In Eclipse we already have Maven Plug-in by default,
+	we will get a maven plugin so that's the reason we are able to create maven project,
+  	able to update pom.xml, 
+	we are able to run pom.xml 
+	
+Whenever we want to run our project outside the Eclipse.
+Then we need to install maven at the OS level that means if you are working on MAc or Window you have to download the maven software and we have to install it 
+So, Maven is available in the two different Flavors
+	1 Eclipse plugin
+	2 Software in the OS system level we have to install on maven software
+so we will able to run pom.xml in our command prompt
+
+Steps:
+1  Close your Eclipse
+2  Install the Maven on Window
+3  First download the software
+4  Go to Chrome search Download Maven
+5  Select Maven apache org, i.e download apache maven
+6  As per your window select file for win select Binary zip archive "we need to do small configuration here"
+7  Once download extrat that zip file 
+8  After extracting copy this folder and patste it in c drive
+9  Open the folder and set the path
+10  click on folder open the bin folder & copy the above path
+11 go to my pc , go to properties
+12  go to advanced system settings
+13  click on environment variable
+14 select path variable and click on edit
+15 click on new , paste the url click on ok, ok
+
+Cross check maven configuration 
+1  Open cmd
+2  Write mvn -version
+3  after running above command maven is added in your machine or not
+4  Then we run the project through cmd
+
+How to Run project on CMD
+1  type cd "location of your file"
+2  type dir 'it shows all project related files'
+3  type mvn test (this will fetch all the pom.xml information)
+4  Then it shows the result (if java version is not compatible error will be occured)
+	Suppose if the error occured then add the tag in pom.xml inside the maven-compiler-plugin
+	      <configuration>
+				<source>10</source>
+				<source>10</source>
+          </configuration>
+    type mvn test in cmd
+    
+
+    
+
+
+
+*/
