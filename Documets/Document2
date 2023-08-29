@@ -195,6 +195,12 @@ Then push it to the GitHub
 Then using Jenkins we will able to run our project All this is a complete process.
 Then commit the code in the local repository
 
+CI Process:
+
+Pre-requisites
+1  Install git software
+2  Create an account with github and create empty repository.
+	Repo URL : https://github.com/genzsoln/Sujata_API_Automation_Framework.git
 
 Git Installation:
 
@@ -242,17 +248,52 @@ Following are the commands we need to use
 	
 	after this command it will shows how many files or what we need to add this files inside staging area.
 	
-4  git add -A
-
-	If you want to add all the command into staging area.
+4  git add -A              If you want to add all the command into staging area.
 	
-   git add filename.jave
+   git add filename.ext    If you want to add specific file the directly write the name of that files.
 	
-	If you want to add specific file the directly write the name of that files.
-	
-   git add .
+   git add *.ext           If you want to add multiple files with the same extension which are having same extension then we can write this simple regular expression * start 
+                           It means all the files which ever is having have extension will be added to the staging 
    
-   If you want to add multiple files with the same extension which are having same extension then we can write this simple regular expression * start 
-   It means all the files which ever is having have extension will 
+   git add foldername       If you want to add any folder.
+   
+5  git commit -m "message"
+
+	what ever changes you done you have to add inside the message.
+	after this command our entire code commited to the local repository with our git repository.
+	after executing above command what ever shows in white color it will commites files.
+	
+	Once we have files in the git repository then we have to push our code into the remote repository.
+	For that we need to create empty repository.
+	then we have to push code.
+	
+	Go to your Github account, create one empty repository.
+	1 Go to home page
+	2 there is "new" button click on that.
+		Or there is one '+' button click on that there is one option 'new repository' click on that.
+	3 Give the repository name
+	4 Click on create repository.
+	5 This will create an empty remote repository also there our repository URL will be displayed.
+	
+Push the code to remote repository
+
+-- we have to execute one command here 
+6  git remote add origin MainBrnach           This cmd just establish the connection we have to execute this command only one time, it will connect local repo to remote repo
+
+7  git push -u origin MainBranch
+	Go to your remote repo refresh your page, we will able to see all the files.
+	
+Suppose you already done something in one round & in second round we added some new test cases in my workspace, 
+So new changes is not part of our local repo and staging & also which not part of our remote repo ,
+so we have to run all the command from the beginning.
+
+so we need to run below command
+git add 
+git commit 
+git push
+
+1  git add -A
+2  git commit -m "msg"
+3  git push -u origin MainBranch
 
 */
