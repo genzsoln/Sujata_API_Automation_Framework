@@ -296,4 +296,101 @@ git push
 2  git commit -m "msg"
 3  git push -u origin MainBranch
 
+-- Once the files are available in the remote repo our Jenkins should able to execute these files in their environment
+-- we need to Install Jenkins.
+-- In GitHub repo we dont do any direct changes, whatever changes we want to do that should be done only through our project.
+-- If we delete something that also automaticallly committed, again we need to run the commands aad, commit, push.
+
+
+Download Jenkins
+
+Refer this link how to download and install jenkins : https://www.youtube.com/watch?v=0RVbTDLXk50
+
+Step 1 : Go to website jenkins.io
+
+Step 2 : Click on Download 
+https://www.jenkins.io/download/thank-you-downloading-windows-installer-stable/
+
+Step 3 : Go to download section click on windows (as per your OS) (installation started)
+
+Step 4 : Once download completed install the jenkins.
+			Logon Type select first option
+			Click on Test Port
+			after clicking next it will showa error if you installed above java 17 version
+			because jenkins only supports java 11 to 17
+
+			download java 11
+			click on Java SE 11 Archive Downloads
+			https://www.oracle.com/in/java/technologies/javase/jdk11-archive-downloads.html
+			for installing java 11 we need to have oracle account we need to create oracle account then download will be started.
+			after download we need to paste that dolder c drive--program file--java
+			set the environment variable for java 11
+			do the same installation process 
+			set the java 11 path click on next and install Jenkins
+			
+			go to chrome- search localhost 8080
+			There is one URL click on that you will get one link copy that link C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword
+			Go to c drive and paste that path 
+			Then it will shows an option where you want to open that password select notepad
+			76ab9b4d40e54f9b98b02956c911a297
+			Paste that password on the above link page click on continue.
+			Select install suggested plugins
+			wait till everything done, after installing all plugins click on continue.
+			add your all details to create account name, email, password etc
+			click on save and continue.
+			It will provide your Jenkins URL : http://localhost:8080/
+			Click on Save & Finish
+			Click on start using Jenkins.
+			
+Jenkins :
+
+Jenkins automates tests when code changes, speeds up testing using multiple machines, and provides reports for quick issue detection.
+Jenkins automates tests when code changes, makes testing faster, and helps deploy code.
+
+Jenkins will run on localhost 8080.
+Login to your jenkins account http://localhost:8080/
+
+When you want to run your program in Jenkins dollow the below steps :
+
+1 On Jenkins there is one option Manage Jenkins
+2 Go to global tool configuration or tools (we have to set maven path and jenkin path correctly)
+	Add JDK 11 path
+	Add Git Path along with executable file C:\Program Files\Git\bin\git.exe
+	click on maven installation
+	
+We have to install maven for windows
+	Go to Chrome 
+	Search Maven
+	Click on offical apache maven website https://maven.apache.org/
+	click on download
+	click on Binary zip archive
+	Extract that file, go to c drive, program file & paste that folder.
+	Now set the maven path 
+	First set bin path inside environment variable
+	
+3 On dashboard there is on option New Item click on that
+	Write name of your project.
+	Select the Maven
+
+4 One page will be open
+	Inside the General section we have to select some options
+	Source code management is "Git"
+	Specify remote repo URL
+	In Build section in goals and option write "clean test"
+	apply & save
+	Now our project will created in Jenkins.
+	
+How to Run project in Jenkins
+	In dashboard we can see our project.
+	write click on 3 dot near our project
+	select Build now
+	OR
+	Directly click on project, there is option build now.
+	First time it will pull project in jenkins from github repo it will start execution project
+	
+
+	
+			
+			
+						
 */
