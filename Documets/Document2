@@ -259,6 +259,7 @@ Following are the commands we need to use
    
 5  git commit -m "message"
 
+<<<<<<< HEAD
 	what ever changes you done you have to add inside the message.
 	after this command our entire code commited to the local repository with our git repository.
 	after executing above command what ever shows in white color it will commites files.
@@ -394,3 +395,6 @@ How to Run project in Jenkins
 			
 						
 */
+=======
+*/
+>>>>>>> 2b21c7db92b04703f1626b79c84876c7557ecc43
