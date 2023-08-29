@@ -1,7 +1,7 @@
 /*
 				Another Way To Run the Framework
 
-Instade of writing EndPoints, Rootclass, we have to create on Properties file, inside that Properties we have to 
+instead of writing EndPoints, Route class, we have to create on Properties file, inside that Properties we have to 
 place all the URL's 
 
 1  Create Properties file
@@ -26,7 +26,7 @@ loas properties file and we will ablle to read the data from the properties file
 3 Create one class for UserTests2.java Copy paste UserTests.java in same package change the name.
 for reading the data
 
-4 got to testng.xml 
+4 go to testng.xml 
 	add your class name there i.e UserTest2
 	Run Your testng Suite
 	
@@ -139,11 +139,120 @@ How to Run project on CMD
 				<source>10</source>
 				<source>10</source>
           </configuration>
+    As well as we need to add a java 12 or 13 or we need to install version which is above java 11
+    Then need to set java environment variable
     type mvn test in cmd
     
+Need to remember below points:
 
-    
+1 Execute tests using pom.xml within eclipse.
+2 Execute tests using pom.xml in command prompt.
+3 Commit code in local repository (Git repository)
+4 Push your code to remote repo (GitHub repo)
+5 Run project in Jenkins (From git github) (jenkins will get code from the latest code from the GitHub every time because this
+ is everyday task whwnever you do some changes whatever you add new test cases or update / delete anything we will always make 
+ sure those changes should be part of local repository & remote repo).
+
+If we are executing successfully using maven command then only we will able to run our project remotely through Jenkins from Git.
+we will able to run it because in Jenkins also we will specify the maven command.
+
+-- Jenkins also run your project by taking the help og the same command.
+
+What is CI (Continuous Integration) 
+
+Continuous Integration process 
+There are multiple dev and tester so developer , there are multiple developer are working on multiple things.
+So, at the end of the day what they do is they checkin the code in the common tepository this repo is global repository.
+But before sending the code to global repository they are also having their own local repositories this is call as a git, git is 
+local repository.
+So they will commit their code first inside the their local repositories and then they will push their entire code from their 
+local repository to remote repository. 
+Once the entire code is availale in the global repository this is Github Repository.
+Git is local repository and GitHub is global repository.
+
+Now devops team will do here is devops team will create "Build" by taking all this code build or package or what ever related to 
+code, this we will validate by using testing code, so whatever developer is doing parallely the Testerd also do the same things.
+
+So What ever automation code we have developed at the end of the day all the tester they will keep their code in their local 
+repository which is git repository and from therre they will push the code in the GitHub repository & in the devops environment 
+they will use the Maven to create a build from the developers and from the GitHub they will get the automation code using jenkins 
+they will try to exit or automation code against the build.
+
+So here it self basic sanity and regression is completed before getting the build. all this process called Continuous Integration 
+process one side the developer will do their own tasks and other side thetester also will do their own tasks so developer's, 
+tester's & devops these teams will work together collaboratively to achieve the one goal 
+
+Why we need to run project so many times
+
+Above is actual CI process that is the reason we should able to execute our project first in the command prompt before directly 
+jumping into the Jenkins, in the local environment we are testing whether our project is successfully working fine or not.
+
+So we need two verification
+1 We should able to run our project within our eclipse
+2 We should able to execute project within command prompt
+Once they are successful then we will able to commit our code into Git
+Then push it to the GitHub 
+Then using Jenkins we will able to run our project All this is a complete process.
+Then commit the code in the local repository
 
 
+Git Installation:
+
+Steps 1 : Install Git 
+
+1  Go to The Chrome
+2  Search Git bash
+3  Click on first link i.e Download https://git-scm.com/downloads
+4  click os Download as per your OS win, mac, linux
+5  Go to Download in you system
+6  Click on Git install the software just clicking next next.
+
+After you install Git Bash, you can right-click inside a folder. You'll see an two options 'Open Git Bash' 'Open GIT GUI' 
+When we open 'GIT Bash' then you will able to see the git command prompt. You can then type and run all different commands in that window.
+
+Step 2 : We need GitHub Account.
+-- Go to github.com
+-- create an account with github.
+
+Following are the commands we need to use
+
+1  git init - create local repository in your project location
+
+	Go to your project location
+	Right click on any place
+	select 'git bash'
+	Git command prompt will be open
+	After git init one folder will be created in your project location i.e 'git'
+	
+2  git config --global user.name "your name"
+   git config --global user.email "abc@gmail.com"
+   
+	Once we create our local repository & we have to provide our information to the local repository.
+	because 1st time when we're working with a git command first time we have to tell our username and email address
+	to the git repository 
+	Because whatever changes we do or whatever updations modifications you do everything well be remembered by suing our name anf mail address
+	So we have to use these command
+	only we have to use these 2 command when we use git first time.
+
+3  git status
+
+	we have to check the status like is there any files are ready to add or not every time we can check the status
+	So whether files are there in the working directory or not, already commited already added or not already committes,pushed or not 
+	We can verify by uing status commands.
+	
+	after this command it will shows how many files or what we need to add this files inside staging area.
+	
+4  git add -A
+
+	If you want to add all the command into staging area.
+	
+   git add filename.jave
+	
+	If you want to add specific file the directly write the name of that files.
+	
+   git add .
+   
+   If you want to add multiple files with the same extension which are having same extension then we can write this simple regular expression * start 
+   It means all the files which ever is having have extension will 
 
 */
