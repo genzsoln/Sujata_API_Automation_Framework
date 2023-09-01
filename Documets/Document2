@@ -389,12 +389,5 @@ How to Run project in Jenkins
 	Directly click on project, there is option build now.
 	First time it will pull project in jenkins from github repo it will start execution project
 	
-
-	
-			
-			
 						
 */
-=======
-*/
->>>>>>> 2b21c7db92b04703f1626b79c84876c7557ecc43
